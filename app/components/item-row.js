@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, TouchableHighlight, Image } from 'react-native';
 import HTMLView from 'react-native-htmlview'
 import Config from '../config';
 import { Actions } from 'react-native-router-flux';
@@ -19,6 +19,9 @@ export default class ItemRow extends Component {
         return (
             <TouchableHighlight onPress={goSinglePage}>
                 <View style={styles.container}>
+                    <View style={styles.featuredContainer}>
+                        <Image resizeMode="cover" source={{uri: 'http://placeimg.com/300/150'}} style={styles.featuredImage}/>
+                    </View>
                     <Text style={styles.title}>{this.props.title.rendered}</Text>
                     <HTMLView
                         value={`<i>${excerpt}</i>`}
@@ -40,6 +43,18 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
         paddingRight: 10,
         paddingLeft: 10,
+    },
+    featuredContainer: {
+        position: 'relative',
+        height: 150,
+        flex: 1
+    },
+    featuredImage: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
     },
     title: {
         fontWeight: "500",

@@ -92,7 +92,7 @@ export default class Blog extends Component {
                         style={styles.buttonPrev}
                         onPress={this._loadPrevContentAsync}
                         title="Previous"
-                        accessibilityLabel="Load more posts"
+                        accessibilityLabel="Load previous posts"
                     />
                 }
 
@@ -101,7 +101,7 @@ export default class Blog extends Component {
                     onPress={this._loadNextContentAsync}
                     title="Next"
                     color="#841584"
-                    accessibilityLabel="Load more posts"
+                    accessibilityLabel="Load next posts"
                 />
             </View>
         )
@@ -109,7 +109,6 @@ export default class Blog extends Component {
 
     componentDidMount() {
         this._latestPosts();
-        console.log(this.state.page);
     }
 
     render() {
