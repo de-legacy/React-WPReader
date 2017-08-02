@@ -25,7 +25,7 @@ export default class Blog extends Component {
             page: 1,
         }
 
-        req_url = `${Config.wordpress.url}/${Config.wordpress.wp_api}/${Config.wordpress.posts_route}?per_page=${Config.wordpress.per_page}`;
+        req_url = `${Config.wordpress.url}/${Config.wordpress.wp_api}/${Config.wordpress.posts_route}/?_embed&per_page=${Config.wordpress.per_page}`;
         this._latestPosts = this._latestPosts.bind(this);
         this._loadNextContentAsync = this._loadNextContentAsync.bind(this);
         this._loadPrevContentAsync = this._loadPrevContentAsync.bind(this);
@@ -121,7 +121,7 @@ export default class Blog extends Component {
                         <Text>Loading...</Text>
                     </View>
                 }
-            
+                
                 {
                     this.state.loaded &&
                     <ListView dataSource={this.state.posts} 

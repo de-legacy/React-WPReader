@@ -14,13 +14,17 @@ export default class ItemRow extends Component {
 
     render() {
         let excerpt = this.props.excerpt.rendered.substring(0, Config.wordpress.excerpt_length);
+        let featuredImageUrl = this.props._embedded['wp:featuredmedia'][0].source_url;
         const goSinglePage = () => Actions.SingleItem({id: this.props.id});
 
         return (
+            
             <TouchableHighlight onPress={goSinglePage}>
+                
                 <View style={styles.container}>
                     <View style={styles.featuredContainer}>
-                        <Image resizeMode="cover" source={{uri: 'http://placeimg.com/300/150'}} style={styles.featuredImage}/>
+                        <Image resizeMode="cover" source={{uri: featuredImageUrl}} style={styles.featuredImage}/>
+                    
                     </View>
                     <Text style={styles.title}>{this.props.title.rendered}</Text>
                     <HTMLView

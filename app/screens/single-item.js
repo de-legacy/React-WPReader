@@ -27,16 +27,16 @@ export default class SingleItem extends Component {
                     </View>
                 }
 
-                {
+                 {
                     this.state.loaded && 
                    <Text style={styles.singleTitle}>{this.state.post.title.rendered}</Text>
-                }
+                } 
 
-                {
+                 {
                     this.state.loaded && 
                     <WebView  
                         source={{html: this.state.post.content.rendered}} />
-                }
+                } 
             </View>
         );
     }
@@ -50,10 +50,10 @@ export default class SingleItem extends Component {
     }
 
     async _loadSinglePost() {
-        let url = `${Config.wordpress.url}/${Config.wordpress.wp_api}/${Config.wordpress.posts_route}/${this.props.id}`;
+        let url = `${Config.wordpress.url}/${Config.wordpress.wp_api}/${Config.wordpress.posts_route}/${this.props.id}/?_embed`;
+       
         Api(url).then(
             (response) => {
-                
                 this.setState({
                     loaded: true,
                     post: response
